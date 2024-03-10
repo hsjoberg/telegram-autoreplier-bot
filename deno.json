@@ -1,0 +1,5 @@
+{
+  "tasks": {
+    "start": "deno run --allow-net=api.telegram.org --allow-env=TELEGRAM_TOKEN,AUTOREPLY_MESSAGE,WHITELISTED_USERS,DENOKV_TOPLEVEL_KEY --unstable-temporal main.ts"
+  }
+}
