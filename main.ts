@@ -58,8 +58,8 @@ bot.on("message:text", async (ctx) => {
           reply_to_message_id: ctx.msg.message_id,
         },
       );
-      await updateLastMessageDate(chatId, userId);
     }
+    await updateLastMessageDate(chatId, userId);
   } else if (ctx.chat.type === "private") {
     ctx.reply(
       "I only work in group chats. Add me to a group chat to get started",
