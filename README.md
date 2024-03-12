@@ -42,6 +42,12 @@ DENOKV_TOPLEVEL_KEY (optional)
 You can set or change this environment variable to reset the state.
 ```
 
+> [!CAUTION]
+>
+> If you deploy the bot on other serverless hosts it has to be on one region
+> only. This is because Deno KV database replication is not supported outside
+> Deno Deploy.
+
 ## Contributions
 
 The project uses `deno fmt`. Run it before committing.

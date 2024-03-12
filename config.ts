@@ -1,10 +1,11 @@
 /**
  * You can either just change the code here to set your configuration, or use environment variables.
- * See README.md for more info for the supported environment variables.
+ * See README.md for more info about the supported environment variables.
  *
  * If you want to deploy the bot on Deno Deploy or other serverless solutions, you probably have to
  * use environment variables method.
  */
+
 import type { Temporal } from "npm:@js-temporal/polyfill@0.4.4";
 import { parseEnvAutoReply } from "./config-helpers.ts";
 import { parseEnvWhitelistedUsers } from "./config-helpers.ts";

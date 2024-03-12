@@ -68,7 +68,7 @@ bot.on("message:text", async (ctx) => {
 });
 
 // If this file is the main entry point for Deno, start the long-polling.
-// Otherwise we assume webhook is being used (`webhook.ts`),
+// Otherwise we assume webhook is being used (`webhook.ts`).
 if (import.meta.main) {
   bot.start();
   console.log("Bot started.");
