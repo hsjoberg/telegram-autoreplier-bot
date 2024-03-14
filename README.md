@@ -38,6 +38,10 @@ first name.
 WHITELISTED_USERS (optional)
 Comma-separated list of whitelisted user's IDs.
 
+REPLY_ON_DAYS_PASSED (optional)
+Reply to users that haven't written a message in the chat group for X number of
+days. Set to 0 to deactivate, otherwise 90 days will be used.
+
 DENOKV_TOPLEVEL_KEY (optional)
 You can set or change this environment variable to reset the state.
 ```

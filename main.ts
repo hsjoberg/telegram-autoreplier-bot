@@ -31,7 +31,9 @@ async function shouldReply(chatId: number, userId: number): Promise<boolean> {
   const lastSeen = Temporal.Instant.fromEpochSeconds(user.value.lastSeen);
   const currentTime = Temporal.Now.instant();
 
-  const duration = lastSeen.until(currentTime);
+  const duration = lastSeen.until(currentTime, {
+    largestUnit: "minute",
+  });
   return autoReplyIfEnoughTimeHasPassed(duration);
 }
 
