@@ -11,18 +11,18 @@ export function parseEnvWhitelistedUsers() {
   );
 }
 
-export function evaluateDaysPassedEnv(duration: Temporal.Duration) {
+export function evaluateDaysPassedEnv(
+  duration: Temporal.Duration,
+): boolean | null {
   const daysPassedEnvStr = Deno.env.get("REPLY_ON_DAYS_PASSED");
   if (daysPassedEnvStr === undefined) {
     return null;
   }
 
-  if (daysPassedEnvStr) {
-    const daysPassedEnv = Number.parseInt(daysPassedEnvStr);
-    if (daysPassedEnv === 0) {
-      return false;
-    }
-    // Temporal does not give us day diff, so we convert days to minutes.
-    return duration.minutes >= (daysPassedEnv * 24 * 60);
+  const daysPassedEnv = Number.parseInt(daysPassedEnvStr);
+  if (daysPassedEnv === 0) {
+    return false;
   }
+  // Temporal does not give us day diff, so we convert days to minutes.
+  return duration.minutes >= (daysPassedEnv * 24 * 60);
 }
