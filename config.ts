@@ -7,7 +7,7 @@
  */
 
 import type { Temporal } from "npm:@js-temporal/polyfill@0.4.4";
-import { parseEnvAutoReply } from "./config-helpers.ts";
+import { evaluateDaysPassedEnv, parseEnvAutoReply } from "./config-helpers.ts";
 import { parseEnvWhitelistedUsers } from "./config-helpers.ts";
 
 export const telegramBotToken: string = Deno.env.get("TELEGRAM_TOKEN") ?? "";
@@ -27,7 +27,14 @@ export const whitelistedUsers = parseEnvWhitelistedUsers() ?? [];
 
 // Auto-reply to infrequent users. Return false here to deactivate.
 export function autoReplyIfEnoughTimeHasPassed(duration: Temporal.Duration) {
-  return duration.months >= 3;
+  const envEvaluation = evaluateDaysPassedEnv(duration);
+  if (envEvaluation !== null) {
+    return envEvaluation;
+  }
+
+  // Temporal does not give us day diff, so we convert days to minutes.
+  // 90 days.
+  return duration.minutes >= 90 * 24 * 60;
 }
 
 // Changing this to another value will reset state.
