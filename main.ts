@@ -45,7 +45,7 @@ async function updateLastMessageDate(chatId: number, userId: number) {
 }
 
 // Handle incoming Telegram messages
-bot.on("message", async (ctx) => {
+bot.on("message:text", async (ctx) => {
   if (ctx.chat.type === "group" || ctx.chat.type === "supergroup") {
     const chatId = ctx.chat.id;
     const userId = ctx.from.id;
